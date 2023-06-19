@@ -1,6 +1,6 @@
 # Sync Images
 
-This is an example of a github action to pull automatically latest version of Falcon Sensor and Kubernetes Protection Agent (KPA).
+This is a example of a github action to pull automatically latest version of Falcon Sensor and Kubernetes Protection Agent (KPA).
 
 **Configure secrets**
 
