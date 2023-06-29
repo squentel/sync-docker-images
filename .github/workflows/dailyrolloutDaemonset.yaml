@@ -15,16 +15,20 @@ permissions:
       contents: read
 jobs:
   deploy_sensor:
-  - uses: azure/login@v1
-    with:
-      creds: ${{ secrets.AZURE_CREDENTIALS }}
-     
-  - name: Set AKS context
-    id: set-context
-    uses: azure/aks-set-context@v3
-    with:
-      resource-group: '${{ secrets.resource_group }}' 
-      cluster-name: '${{ secrets.cluster_name }}'
-  - name: Setup kubectl
-    id: install-kubectl
-    uses: azure/setup-kubectl@v3
+    runs-on: ubuntu:latest
+    steps:
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }} 
+      - name: Set AKS context
+        id: set-context
+        uses: azure/aks-set-context@v3
+        with:
+          resource-group: '${{ secrets.resource_group }}' 
+          cluster-name: '${{ secrets.cluster_name }}'
+      - name: Setup kubectl
+        id: install-kubectl
+        uses: azure/setup-kubectl@v3
+      - name: restart_sensor
+        run: |
+             kubectl rollout restart daemonset -n falcon-system falcon-helm-falcon-sensor
