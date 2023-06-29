@@ -110,6 +110,8 @@ jobs:
           docker pull $FALCON_IMAGE_REPO:$tag
           docker tag $FALCON_IMAGE_REPO:$tag $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/falcon-sensor:$tag
           docker push $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/falcon-sensor:$tag
+          docker tag $FALCON_IMAGE_REPO:$tag $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/falcon-sensor:latest
+          docker push $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/falcon-sensor:latest
         done
     
     # REQUIRED PARAMATERS
@@ -150,6 +152,8 @@ jobs:
           docker pull $FALCON_IMAGE_REPO:$tag
           docker tag $FALCON_IMAGE_REPO:$tag $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/falcon-container:$tag
           docker push $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/falcon-container:$tag
+          docker tag $FALCON_IMAGE_REPO:$tag $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/falcon-container:latest
+          docker push $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/falcon-container:latest
         done
 
 
@@ -180,3 +184,5 @@ jobs:
         docker pull $FALCON_IMAGE_KPA_REPO:$FALCON_IMAGE_KPA_TAG
         docker tag $FALCON_IMAGE_KPA_REPO:$FALCON_IMAGE_KPA_TAG $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/kpagent:$FALCON_IMAGE_KPA_TAG
         docker push $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/kpagent:$FALCON_IMAGE_KPA_TAG
+        docker tag $FALCON_IMAGE_KPA_REPO:$FALCON_IMAGE_KPA_TAG $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/kpagent:latest
+        docker push $REGISTRY_HOST/$REGISTRY_REMOTE_REPO/kpagent:latest
