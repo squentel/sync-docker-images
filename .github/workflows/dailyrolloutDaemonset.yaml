@@ -15,7 +15,7 @@ permissions:
       contents: read
 jobs:
   deploy_sensor:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - uses: azure/login@v1
         with:
