@@ -1,0 +1,20 @@
+name: CrowdStrike Automatic Image Pull
+
+on:
+  ## scheduled job at 5:30 UTC every sunday
+  schedule:
+    - cron: '30 5 * * *'
+  ## manual trigger
+  # workflow_dispatch
+  ## on push
+  push:
+    branches: [ main ]
+
+permissions:
+      id-token: write
+      contents: read
+
+jobs:
+  - uses: azure/login@v1
+   with:
+     creds: ${{ secrets.AZURE_CREDENTIALS }}
